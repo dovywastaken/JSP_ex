@@ -16,7 +16,7 @@ public class exam02_1 extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		RequestDispatcher ds = req.getRequestDispatcher("exam2-1.jsp");
+		RequestDispatcher ds = req.getRequestDispatcher("chapter2/exam2-1.jsp");
 		ds.forward(req, resp);
 	}
 

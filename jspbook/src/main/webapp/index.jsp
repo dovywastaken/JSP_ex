@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,5 +21,8 @@
 		<hr><hr>
 		
 		<a href="3_1">예제 3_1</a>
+		<a href="3_2">예제 3_2</a>
+		<a href="3_3">예제 3_3</a>
+		<a href="3_4">예제 3_4</a>
 </body>
 </html>
