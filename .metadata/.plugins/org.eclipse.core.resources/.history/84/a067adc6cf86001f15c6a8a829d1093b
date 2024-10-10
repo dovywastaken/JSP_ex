@@ -1,0 +1,5 @@
+package chapter04;
+
+public @interface exam04_0 {
+
+}

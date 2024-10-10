@@ -44,5 +44,25 @@
 		<a href="4_7">예제 4_7</a>
 		<a href="4_8">예제 4_8</a>
 		
+		<br><br><br><br><br><br>
+		
+		<form action = "4_0" method ="get">
+			<input type ="text" name = "id"/>
+			<br>
+			<input type ="text" name = "name"/>
+			<br>
+			<input type ="submit" value = "전송">
+		</form>
+		
+		<% 
+			String id = "admin";
+			String name = "Euishin";
+		%>
+		
+		<p><a href="4_0?id = ${id}&name=<%=name%>"> 예제 4-8 </a></p>
+		
+		
+		
+		
 </body>
 </html>

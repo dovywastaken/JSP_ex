@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+c
 	<jsp:useBean id = "person" class ="chapter04.Person" scope ="request" />
 	<p> 아이디 : <%= person.getId() %> 
 	<p> 이 름 : <%= person.getName() %> 
