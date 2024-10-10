@@ -43,9 +43,11 @@
 		<a href="4_6">예제 4_6</a>
 		<a href="4_7">예제 4_7</a>
 		<a href="4_8">예제 4_8</a>
+		<a href="4_12">예제 4_12</a>
 		
 		<br><br><br><br><br><br>
 		
+		<p>예제 4_0
 		<form action = "4_0" method ="get">
 			<input type ="text" name = "id"/>
 			<br>
