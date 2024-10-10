@@ -1,0 +1,9 @@
+package chapter04;
+
+import jakarta.servlet.http.HttpServlet;
+
+@WebServlet("/4_3")
+public class exam04_3 extends HttpServlet
+{
+
+}
