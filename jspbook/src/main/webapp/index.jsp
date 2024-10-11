@@ -72,20 +72,7 @@
 			<p> <input type = "submit" value ="전송">
 		</form>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		<a href ="5_2">예제 5_2</a>
 		
 		
 		
