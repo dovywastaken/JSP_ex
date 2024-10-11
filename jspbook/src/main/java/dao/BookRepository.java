@@ -21,6 +21,9 @@ public class BookRepository
 		book1.setUnitsInStock(1000);
 		book1.setReleaseDate("2022/10/06");
 		
+		
+		
+		
 		Book book2 = new Book("ISBN1235" , "자바마스터", 30000);
 		book2.setAuthor("송미영");
 		book2.setDescription
@@ -32,6 +35,9 @@ public class BookRepository
 		book2.setUnitsInStock(1000);
 		book2.setReleaseDate("2023/01/01");
 		
+		
+		
+		
 		Book book3 = new Book("ISBN1236" , "파이썬 프로그래밍", 30000);
 		book3.setAuthor("최성철");
 		book3.setDescription
@@ -42,6 +48,9 @@ public class BookRepository
 		book3.setCategory("IT모바일");
 		book3.setUnitsInStock(1000);
 		book3.setReleaseDate("2023/01/01");
+		
+		
+		
 		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
