@@ -66,7 +66,7 @@
 		<hr><hr>
 		
 		<h2>챕터 5 내장 객체</h2>
-		<form action = "chapter05/request01_process.jsp" method ="post">
+		<form action = "5_1" method ="get">
 			<p> 아 이 디 : <input type = "text" name = "id">
 			<p> 비밀번호 : <input type = "text" name = "passwd">
 			<p> <input type = "submit" value ="전송">
