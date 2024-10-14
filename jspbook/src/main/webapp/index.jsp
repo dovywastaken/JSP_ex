@@ -35,17 +35,6 @@
 		<hr><hr>
 		
 		<h2>챕터 4 액션태그</h2>
-		<a href="4_1">예제 4_1</a>
-		<a href="4_2">예제 4_2</a>
-		<a href="4_3">예제 4_3</a>
-		<a href="4_4">예제 4_4</a>
-		<a href="4_5">예제 4_5</a>
-		<a href="4_6">예제 4_6</a>
-		<a href="4_7">예제 4_7</a>
-		<a href="4_8">예제 4_8</a>
-		<a href="4_12">예제 4_12</a>
-		
-		<br><br><br><br><br><br>
 		
 		<p>예제 4_0
 		<form action = "4_0" method ="get">
@@ -61,7 +50,20 @@
 			String name = "Euishin";
 		%>
 		
-		<p><a href="4_0?id = ${id}&name=<%=name%>"> 예제 4-8 </a></p>
+		<p><a href="4_0?id = ${id}&name=<%=name%>"> 예제 4-0 </a></p>
+		
+
+		<a href="4_1">예제 4_1</a>
+		<a href="4_2">예제 4_2</a>
+		<a href="4_3">예제 4_3</a>
+		<a href="4_4">예제 4_4</a>
+		<a href="4_5">예제 4_5</a>
+		<a href="4_6">예제 4_6</a>
+		<a href="4_7">예제 4_7</a>
+		<a href="4_8">예제 4_8</a>
+		<a href="4_12">예제 4_12</a>
+		
+		<br>
 		
 		<hr><hr>
 		
@@ -74,9 +76,7 @@
 		
 		<a href ="5_2">예제 5_2</a>
 		<a href ="5_3">예제 5_3</a>
-		
-		
-		
+		<a href ="5_4">예제 5_4</a>
 		
 </body>
 </html>

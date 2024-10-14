@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-실습리스트
-<p><a href="2-1">예제 2-1</a></p>
+	로그인을 성공했습니다.
 </body>
 </html>
