@@ -51,14 +51,33 @@ public class BookRepository
 		
 		
 		
-		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
 		listOfBooks.add(book3);
+		
 	}
 	
 	public ArrayList<Book>getAllBooks()
 	{
 		return listOfBooks;
 	}
+	
+	
+	public Book getBookById(String bookId) 
+	{
+		Book bookById = null;
+		
+		for (int i = 0; i < listOfBooks.size(); i++) 
+		{
+			Book book = listOfBooks.get(i);
+			if (book!=null && book.getBookId()!=null && book.getBookId().equals(bookId)) 
+			{
+				bookById = book;
+				break;
+			}
+		}
+		return bookById;
+	}
+	
+	
 }
