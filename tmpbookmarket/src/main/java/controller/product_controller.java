@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/products")
+@WebServlet("")
 public class product_controller extends HttpServlet
 {
 
@@ -28,13 +28,13 @@ public class product_controller extends HttpServlet
 		
 		
 		//모델
-		ArrayList<Book> arr = BookRepository.getAllBooks();
+		//ArrayList<Book> arr = BookRepository.getAllBooks();
 		
 		
 		
 		//이동
 		//데이터 보낼때      키  , 값
-		req.setAttribute("arry", arr);
+		//req.setAttribute("arry", arr);
 		RequestDispatcher rd = req.getRequestDispatcher("books.jsp");
 		rd.forward(req, resp);
 		

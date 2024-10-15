@@ -1,9 +1,0 @@
-package controller;
-
-// controller를 만드는 방법을 순서대로 확인해.boja
-// step 1  : HTTPServlet 클래스를 상속
-
-public class cont1 extends HttpServlet
-{
-	
-}
