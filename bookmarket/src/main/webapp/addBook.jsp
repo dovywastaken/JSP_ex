@@ -18,7 +18,7 @@
 		</div>
 		
 		<div class="row align-items-md-stretch">
-			<form name="newBook" action ="./processAddbook.jsp" method="post">
+			<form name="newBook" action ="bookController/bookController2.java" method="post">
 				<div class="mb-3 row">
 					<label class="col-sm-2">도서코드</label>
 					<div class="col-sm-3">

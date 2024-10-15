@@ -22,6 +22,8 @@
          		<span class="fs-4">Home</span>
 			</a>
 			<a href="books">All Products</a>
+			<br>
+			<a href = "register">Register your Books</a>
 		</header>
 	</div>
 	
