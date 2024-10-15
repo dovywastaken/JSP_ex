@@ -38,7 +38,7 @@ public class exam07_3 extends HttpServlet
 		//전처리
 		String save = req.getServletContext().getRealPath("img");
 		String fileUploadPath = save; //파일 경로 저장
-		//System.out.println(save);
+		System.out.println(save);
 		DiskFileUpload upload = new DiskFileUpload(); //객체 생성
 		List items;
 		
@@ -57,6 +57,7 @@ public class exam07_3 extends HttpServlet
 					fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
 					File file = new File(fileUploadPath + "/" + fileName);
 					fileItem.write(file);
+					System.out.println(fileItem);
 				}
 			}
 		} 
@@ -69,9 +70,6 @@ public class exam07_3 extends HttpServlet
 		
 		
 		//이동
-		
-		RequestDispatcher rd = req.getRequestDispatcher("chapter07/fileupload03_result.jsp");
-		rd.forward(req, resp);
 		
 	}
 	
