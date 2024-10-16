@@ -19,11 +19,14 @@
 			</div>
 		</div>
 		
+
+		
 		<%
-			ArrayList<Book> list = (ArrayList<Book>)request.getAttribute("list");
-			ArrayList<Book> listOfBooks = list; 
+			ArrayList<Book> listOfBooks = (ArrayList<Book>)request.getAttribute("booklist");
 		%>
 		
+		
+
 		<div class="row align-items-md-stretch text-center">
 			<%
 				for(int i=0; i< listOfBooks.size(); i++)
@@ -35,8 +38,8 @@
 				<div class = "h-100 p-2">
 					<h5><b><%=book.getName() %></b></h5>
 					<p> <%=book.getAuthor() %>
-					<br> <%=book.getPublisher() %> | 35 <%= book.getUnitPrice() %>원
-					<p> 37<%=book.getDescription().substring(0,60) %>...
+					<br> <%=book.getPublisher() %> | <%= book.getUnitPrice() %>원
+					<p> <%=book.getDescription().substring(0,60) %>...
 					<p> <%=book.getUnitPrice() %>원
 				</div>
 			</div>

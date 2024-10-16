@@ -19,8 +19,6 @@ public class controller2 extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		
-		
 		BookRepository bookRepository = BookRepository.getInstance();
 		ArrayList<Book> list = bookRepository.getAllBooks();
 		req.setAttribute("booklist", list);

@@ -6,14 +6,15 @@ import dto.Book;
 
 public class BookRepository 
 {
-	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
-	
-	private static BookRepository bookrepository = new BookRepository();
-	
-	public static BookRepository getInstance() 
+	//BookRepository 클래스에 다른 클래스나 jsp에서 접근이 가능하도록 하는 작업
+	private static BookRepository bookrepository = new BookRepository(); //다른데서 직접 생성하지 못하도록 여기에서만 BookRepository 객체를 생성함 (싱글턴방식)
+	public static BookRepository getInstance() //대신 다른데서 객체생성이 가능하도록 getInstance()로만 객체생성이 가능하도록 함
 	{
 		return bookrepository;
 	}
+
+	
+	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
 	
 	public BookRepository() 
 	{
