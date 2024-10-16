@@ -2,9 +2,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Book"%>
 <%@ page import="dao.BookRepository"%> <!-- 도서목록 페이지 수정하기에서 수행한 코드 -->
-<!-- 객체 생성하지 않음 
-<jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session" />
--->
+
 
 <html>
 <head>
@@ -22,9 +20,6 @@
         <p class="col-md-8 fs-4">BookList</p>      
       </div>
     </div>
-	<%--  직접 접근처리하지 않음 컨트롤러에게 전달받음 
-	    ArrayList<Book> listOfBooks = bookDAO.getAllBooks();
-    --%>
     
     <%
     	BookRepository dao = BookRepository.getInstance();
@@ -34,6 +29,7 @@
     
     <%
         ArrayList<Book> listOfBooks = (ArrayList<Book>) request.getAttribute("booklist");
+    	if (listOfBooks != null && !listOfBooks.isEmpty()) {
      %>
       
 	 <div class="row align-items-md-stretch   text-center">	 	
@@ -57,6 +53,14 @@
 		%>
 	
 		</div>	
+		<%
+			} else {
+		%>
+		    <p>등록된 도서가 없습니다.</p>
+		<%
+		    }
+		%>
+		
 		<%@ include file="footer.jsp"%>   
   </div>
 </body>

@@ -1,6 +1,7 @@
 package bookController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import dao.BookRepository;
 import dto.Book;
@@ -22,7 +23,11 @@ public class bookController2 extends HttpServlet
 		String id = req.getParameter("id");
 		//모델이동 : 리파지토리 연결 후 ArrayList 리턴받아야됨
 		BookRepository br = BookRepository.getInstance();
+		ArrayList<Book> listOfBooks = br.getAllBooks(); // 모든 도서 가져오기
+		req.setAttribute("booklist", listOfBooks); // request에 설정
 		Book bk = br.getBookById(id);
+		
+		
 		
 		req.setAttribute("book", bk);
 		RequestDispatcher ds = req.getRequestDispatcher("book.jsp");
