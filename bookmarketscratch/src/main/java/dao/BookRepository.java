@@ -38,4 +38,9 @@ public class BookRepository
 		listOfBooks.add(book2);
 		listOfBooks.add(book3);
 	}
+	
+	public ArrayList<Book> getAllBooks()
+	{
+		return listOfBooks;
+	}
 }
