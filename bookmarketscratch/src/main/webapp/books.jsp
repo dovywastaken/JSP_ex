@@ -20,8 +20,8 @@
 		</div>
 		
 		<%
-			BookRepository bookRepository = (BookRepository) request.getAttribute("bookRepository");
-			ArrayList<Book> listOfBooks = bookRepository.getAllBooks();
+			ArrayList<Book> list = (ArrayList<Book>)request.getAttribute("list");
+			ArrayList<Book> listOfBooks = list; 
 		%>
 		
 		<div class="row align-items-md-stretch text-center">

@@ -20,7 +20,6 @@
 		var submit = document.querySelector("#submitt");
 		console.log("서브밋 들고옴");
 		submit.addEventListener("click", checkLogin)
-		console.log("서브밋에 이벤트 적용");
 	
 		function checkLogin()
 		{

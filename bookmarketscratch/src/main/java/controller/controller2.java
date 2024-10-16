@@ -1,8 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import dao.BookRepository;
+import dto.Book;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,8 +19,11 @@ public class controller2 extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		BookRepository bookRepository = new BookRepository();
-		req.setAttribute("bookRepository", bookRepository);
+		
+		
+		BookRepository bookRepository = BookRepository.getInstance();
+		ArrayList<Book> list = bookRepository.getAllBooks();
+		req.setAttribute("booklist", list);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("books.jsp");
 		rd.forward(req, resp);

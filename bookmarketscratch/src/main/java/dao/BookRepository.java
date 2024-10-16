@@ -8,6 +8,13 @@ public class BookRepository
 {
 	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
 	
+	private static BookRepository bookrepository = new BookRepository();
+	
+	public static BookRepository getInstance() 
+	{
+		return bookrepository;
+	}
+	
 	public BookRepository() 
 	{
 		Book book1= new Book("ISBN1234","C# 프로그래밍", 27000);
