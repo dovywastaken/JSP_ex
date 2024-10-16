@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="home">Home</a>
+	<%@ include file = "menu.jsp" %>
+	
 	<h1>도서 쇼핑몰에 오신 것을 환영합니다</h1>
 	<h3>Welcome to Web Market!</h3>
 	
@@ -30,5 +31,7 @@
 	String CT=hour + ":" + minute + ":" + second + " " + am_pm;
 	out.println("현재 접속 시각 : " + CT + "\n");
 	%>
+	
+	<%@ include file = "footer.jsp" %>
 </body>
 </html>
