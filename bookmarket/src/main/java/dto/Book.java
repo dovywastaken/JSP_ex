@@ -2,10 +2,10 @@ package dto;
 
 import java.io.Serializable;
 
-public class Book  implements Serializable
+public class Book   implements Serializable
 {
-	private static final long serialVersionUID = -4274700572038677000L;
 	
+	private static final long serialVersionUID = -4274700572038677000L;
 	
 	
 	//변수 설정
@@ -19,12 +19,13 @@ public class Book  implements Serializable
 	private long unitsInStock;
 	private String releaseDate;
 	private String condition;
+	private String filename;
 	
 	
 	
 	
 	//생성자
-	
+
 	public Book() 
 	{
 		super();
@@ -124,4 +125,11 @@ public class Book  implements Serializable
 		this.condition = condition;
 	}
 	
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 }
