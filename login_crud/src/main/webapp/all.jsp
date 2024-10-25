@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>전체 회원 보기</title>
 </head>
 <body>
 	<%

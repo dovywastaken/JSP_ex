@@ -36,6 +36,8 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 		return conn;
 	}
 	
+	
+	
 	//Create
 	
 	public void member_create(member_dto dto) 
@@ -67,6 +69,8 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 		
 		//Step 4 : 리턴이 있다면 ResultSet객체에 담기 - CUD 는 상관 없음
 	}
+	
+	
 	
 	//Read
 	public ArrayList<member_dto> getAllmember () throws Exception
@@ -107,7 +111,43 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 	}
 	
 	
+	
+	
 	//Update
+	public member_dto getOnemember(String user_id) 
+	{
+		//Step 1 : DB연결
+
+		member_dto dto = new member_dto();
+		ResultSet rs = null;
+		try 
+		{
+			//Step 1 DB 연결
+			Connection conn = DBconn();
+			
+			//Step 2 Query 전송 및 실행
+			Statement stmt = conn.createStatement();
+			String sql = "select * member where id='"+user_id+"'";
+			rs = stmt.executeQuery(sql);
+
+			if(rs.next()) 
+			{
+				String id = rs.getString("id"); //괄호안에는 컬럼명이 들어감
+				String pw = rs.getString("pw");
+				int age = rs.getInt("age");
+
+				dto.setId(id);
+				dto.setPw(pw);
+				dto.setAge(age);
+			}
+
+		} 
+		catch (Exception e) {e.printStackTrace();}
+
+		return dto;
+
+	}
+	
 	
 	
 	

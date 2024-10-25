@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입하기</title>
+<title>업데이트</title>
 </head>
 <body>
+
+
 	<form action="join" method="post">
 		<p>ID : <input type="text" name="id">
 		<p>PW : <input type="text" name="pw">
