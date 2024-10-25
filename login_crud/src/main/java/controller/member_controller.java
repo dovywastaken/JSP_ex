@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
+//목표 : 데이터를 데이터베이스에 입력하는 것 (Create)
 @WebServlet("/join")
 public class member_controller extends HttpServlet
 {
@@ -42,9 +44,7 @@ public class member_controller extends HttpServlet
 		
 		
 		//이동
-		req.setAttribute("id", id);
-		req.setAttribute("pw", pw);
-		req.setAttribute("age", age);
+		resp.sendRedirect("readall");
 		
 	}
 	

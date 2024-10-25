@@ -6,6 +6,7 @@
 <title>Index</title>
 </head>
 <body>
-	<a href="join">☞ 회원가입하기 ☜</a>
+	<a href="join">☞ 회원가입하기 ☜</a> <br><br><br>
+	<a href="readall">☞ 전체 회원 보기 ☜</a>
 </body>
 </html>
