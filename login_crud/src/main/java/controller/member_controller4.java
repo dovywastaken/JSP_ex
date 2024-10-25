@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/")
+@WebServlet("/update")
 public class member_controller4 extends HttpServlet
 {
 	@Override
@@ -21,7 +21,6 @@ public class member_controller4 extends HttpServlet
 		
 		//모델
 		member_repository mr = member_repository.getInstance();
-		mr.getOnemember(id);
 		member_dto dto = mr.getOnemember(id);
 		//이동
 		req.setAttribute("DTO", dto);
@@ -33,12 +32,22 @@ public class member_controller4 extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		//전처리
+		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
+		int age = Integer.parseInt(req.getParameter("age"));
 		
-		
+		member_dto dto = new member_dto();
+		dto.setId(id);
+		dto.setPw(pw);
+		dto.setAge(age);
 		//모델
-		
+		member_repository mr = member_repository.getInstance();
+		mr.update_member(dto);
 		
 		//이동
+		resp.sendRedirect("readall");
+		
+		
 	}
 	
 }

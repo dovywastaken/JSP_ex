@@ -110,10 +110,6 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 		return arr;
 	}
 	
-	
-	
-	
-	//Update
 	public member_dto getOnemember(String user_id) 
 	{
 		//Step 1 : DB연결
@@ -127,7 +123,7 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 			
 			//Step 2 Query 전송 및 실행
 			Statement stmt = conn.createStatement();
-			String sql = "select * member where id='"+user_id+"'";
+			String sql = "select * from member where id='"+user_id+"'";
 			rs = stmt.executeQuery(sql);
 
 			if(rs.next()) 
@@ -140,7 +136,6 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 				dto.setPw(pw);
 				dto.setAge(age);
 			}
-
 		} 
 		catch (Exception e) {e.printStackTrace();}
 
@@ -149,6 +144,22 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 	}
 	
 	
+	//Update
+	
+	public void update_member(member_dto dto) 
+	{
+		try 
+		{		
+			//Step 1 DB 연결
+			Connection conn = DBconn();
+			//Step 2 Query 전송 및 실행
+			Statement stmt = conn.createStatement();
+			String sql = 
+			"update member set pw='"+dto.getPw()+"',age='"+dto.getAge()+"' where id='"+dto.getId()+"' ";
+			stmt.executeUpdate(sql);
+		} 
+		catch (Exception e) {e.printStackTrace();}
+	}
 	
 	
 	//Delete
