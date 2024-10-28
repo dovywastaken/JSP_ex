@@ -19,9 +19,7 @@ public class member_controller2 extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		//전처리
-		
-		
-		
+
 		//모델이동
 		member_repository mr = member_repository.getInstance();
 		try 

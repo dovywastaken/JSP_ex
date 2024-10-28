@@ -39,7 +39,7 @@ public class member_controller extends HttpServlet
 		dto.setAge(age);
 		
 		//모델 이동
-		member_repository mr = member_repository.getInstance(); //dao 객체 얻어오기
+		member_repository mr = member_repository.getInstance();
 		mr.member_create(dto);
 		
 		

@@ -40,7 +40,6 @@ public class exam07_2 extends HttpServlet
 		String subject3 = multi.getParameter("subject3");
 		
 		
-		
 		Enumeration files = multi.getFileNames();
 		
 		String file3 = (String)files.nextElement();

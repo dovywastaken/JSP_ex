@@ -15,6 +15,5 @@
 		<p> <input type = "submit" value ="전송">
 	</form>
 	
-	컨트롤러 2개 만들어서 실습 했음
 </body>
 </html>

@@ -33,6 +33,8 @@ public class exam05_4 extends HttpServlet
 		if (userid.equals("관리자") && password.equals("1234"))
 		{
 			resp.sendRedirect ("chapter05/response01_success.jsp");
+			
+			
 		}
 		else
 		{

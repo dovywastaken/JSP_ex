@@ -28,7 +28,7 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 		
 		//Step 2 : Connection 객체 생성
 		Connection conn = null;
-		String database = "jdbc:mysql://localhost:3306/login_crud";
+		String database = "jdbc:mysql://localhost:3306/exam16";
 		String id = "root";
 		String password = "1234";
 		conn = DriverManager.getConnection(database, id, password);
@@ -47,7 +47,6 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 			//Step 2 : Connection 객체 생성
 				//확인사항 1. 데이터 베이스 생성 여부 2. WEB-INF 폴더에 라이브러리 확인
 			Connection conn = DBconn(); //Connection 객체는 db 연결을 하는 클래스
-		
 			//SQL쿼리를 전송 : 데이터베이스에 데이터를 삽입하는 절차
 			Statement stmt = conn.createStatement(); //Statement 객체는 SQL을 실어나르는 클래스
 			String user_id = dto.getId();
@@ -58,22 +57,13 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 			String sql = "insert into member values(' "+user_id+"',' "+user_pw+"',' "+user_age+" ')";
 			stmt.executeUpdate(sql);
 		} 
-		catch (Exception e) 
-		{
-			System.out.println("데이터 베이스 연결오류");
-		}
-		
-
-		//Step 3 : SQL 전송객체 생성 및 전송
-		
-		
-		//Step 4 : 리턴이 있다면 ResultSet객체에 담기 - CUD 는 상관 없음
+		catch (Exception e) {System.out.println("데이터 베이스 연결오류");}
 	}
 	
 	
 	
 	//Read
-	public ArrayList<member_dto> getAllmember () throws Exception
+	public ArrayList<member_dto> getAllmember () throws Exception //dto 다 제공
 	{	
 			ArrayList<member_dto> arr = new ArrayList<member_dto>();
 			ResultSet rs = null;
@@ -110,7 +100,7 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 		return arr;
 	}
 	
-	public member_dto getOnemember(String user_id) 
+	public member_dto getOnemember(String user_id) //dto 하나만 제공
 	{
 		//Step 1 : DB연결
 
@@ -176,14 +166,6 @@ public class member_repository //1개만 존재해야 하므로 싱글턴으로 
 			stmt.executeUpdate(sql);
 		} 
 		catch (Exception e) {e.printStackTrace();}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	}
