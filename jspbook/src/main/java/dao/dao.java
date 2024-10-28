@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import dto.member_dto;
@@ -36,11 +37,14 @@ public class dao
 		try 
 		{
 			Connection conn = DBConn();
-			Statement stmt = null;
-			String sql = "insert into member(id, pass, name) values('" + id + "','" + pw + "','" + name + "')";
+			PreparedStatement pstmt = null;
+			String sql = "insert into member(id, pass, name) values(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, name);
 			System.out.println(sql);
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
+			pstmt.executeUpdate();
 			System.out.println("테이블 삽입 성공");
 		} 
 		catch (Exception e) {
