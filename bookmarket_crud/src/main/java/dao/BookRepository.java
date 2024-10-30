@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dto.Book;
@@ -105,7 +106,7 @@ public class BookRepository
 		return listOfBooks;
 	}
 	
-	/*
+/*
 	//id에 맞는 책 가져오기
 	public Book getBookById(String bookId) 
 	{
@@ -122,10 +123,60 @@ public class BookRepository
 		}
 		return bookById;
 	}
+	
+	*/
 	//dao에 책 추가하기
 	public void addBook(Book book)
 	{
-		listOfBooks.add(book);
+		//
+		System.out.println("리파지터리의 addBook 함수실행");
+		//데이터베이스 연결
+		Connection conn = dbconn();
+		//SQL전송
+		PreparedStatement pstmt = null;
+		
+		String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getBookId()); 
+			pstmt.setString(2, book.getBookname());
+			pstmt.setInt(3, book.getUnitPrice()); 
+			pstmt.setString(4, book.getAuthor()); 
+			pstmt.setString(5, book.getBookdescription()); 
+			pstmt.setString(6, book.getPublisher()); 
+			pstmt.setString(7, book.getCategory()); 
+			pstmt.setLong(8, book.getUnitsInStock()); 
+			pstmt.setString(9, book.getReleaseDate()); 	
+			pstmt.setString(10, book.getBookcondition()); 
+			pstmt.setString(11, book.getFilename()); 
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+		finally 
+		{
+			if(pstmt!=null) 
+			{
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		
+			if(conn!=null) {try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}}
+				
+			
+		}
+
+		
+		
+		
 	}
-	*/
+
 }

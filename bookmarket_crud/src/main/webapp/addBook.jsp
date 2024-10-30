@@ -36,7 +36,7 @@
 				<a href="logout.jsp" class = "btn btn-sm btn-success pull right">logout</a>
 			</div>
 		
-			<form name="newBook" action ="addBook" method="post" class="form-horizontal" enctype="multipart/form-data"> <!-- class="form-horizontal", multipart/form-data 추가 -->
+			<form name ="newBook"action ="addBook" method="post" class="form-horizontal" enctype="multipart/form-data"> <!-- class="form-horizontal", multipart/form-data 추가 -->
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key = "bookId"/></label>
 					<div class="col-sm-3">
@@ -103,7 +103,7 @@
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key = "unitInStock"/></label>
 					<div class="col-sm-3">
-						<input type = "text" name="unitInStock" class="form-control" id="unitInStock">
+						<input type = "text" name="unitsInStock" class="form-control" id="unitInStock">
 					</div>
 				</div>
 				
@@ -133,7 +133,7 @@
 		<jsp:include page ="footer.jsp" />
 	</div>
 	
-	<script type="text/javascript" src="./resources/js/validation.js"></script>
+	<script type="text/javascript" src="resources/js/validation.js"></script>
 	</fmt:bundle>
 </body>
 </html>
