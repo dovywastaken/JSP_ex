@@ -16,7 +16,7 @@ public class BookRepository
 	//싱글턴 방식
 	public static BookRepository getInstance()
 	{
-		System.out.println("2 : BookRepository 객체를 전달하기 위한 getInstance 실행");
+		System.out.println("[싱글턴 방식으로 BookRepository를 불러왔습니다]");
 		return bookrepository;
 	}
 
@@ -38,12 +38,12 @@ public class BookRepository
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(database, id, password);
 			//System.out.println("conn 객체에 드라이버매니저 정보 담기 완료");
-			System.out.println("데이터 베이스 연결 완료");
+			System.out.println("[데이터 베이스 연결 완료]");
 		} 
 		catch (Exception e) 
 		{
-			System.out.println("데이터베이스 연결이 실패되었습니다.");
-			System.out.println("SQLException : " + e.getMessage());
+			System.out.println("[데이터베이스 연결이 실패되었습니다]");
+			System.out.println("[SQLException : " + e.getMessage() + "]");
 		}
 		return conn;
 	}
@@ -52,6 +52,7 @@ public class BookRepository
 	//모든 책 dto를 ArrayList에 묶어서 가져오기
 	public ArrayList<Book> getAllBooks()
 	{
+		System.out.println("[getAllBooks 함수가 실행되었습니다]");
 		ArrayList<Book> listOfBooks = new ArrayList<Book>();
 		//Book 객체 묶음
 		//Step 1: 데이터 베이스 연결
@@ -80,7 +81,7 @@ public class BookRepository
 				long unitsInStock = rs.getLong("unitsInStock");
 				String releaseDate = rs.getString("releaseDate");
 				String bookcondition = rs.getString("bookcondition");
-				String filename = rs.getString("filename");
+				String filename = rs.getString("fileName");
 				
 				Book bk = new Book();
 				bk.setBookId(bookId);
@@ -102,41 +103,78 @@ public class BookRepository
 		{
 			System.out.println("예외처리 발생" + e.getMessage());
 		}
-
+		System.out.println("[getAllBooks 함수가 무사히 실행되어 총 " + listOfBooks.size() + "개의 dto를 가져옵니다]");
 		return listOfBooks;
 	}
 	
-/*
-	//id에 맞는 책 가져오기
+	//id에 맞는 책dto 가져오기
 	public Book getBookById(String bookId) 
 	{
-		Book bookById=null;
+		System.out.println("[getBookByID 함수 입장]");
+		Book bookById = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
-		for (int i=0; i<listOfBooks.size(); i++) 
+		//데이터 베이스 연결
+		Connection conn = dbconn();
+		//쿼리 전송
+		String sql = "select * from book where bookid=?";
+		System.out.println("[ 다음 SQL문을 데이터베이스로 보냅니다 " + sql + " ]");
+		try 
 		{
-			Book book = listOfBooks.get(i);
-			if(book != null && book.getBookId() != null && book.getBookId().equals(bookId)) 
-			{
-				bookById = book;
-				break;
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bookId);
+			rs = pstmt.executeQuery();
+			
+			//ResultSet을 객체로 전환
+			if(rs.next()) {
+				String dbbookId = rs.getString("bookId");
+				String bookname = rs.getString("bookname");
+				int unitPrice = rs.getInt("unitPrice");
+				String author = rs.getString("author");
+				String bookdescription = rs.getString("bookdescription");
+				String publisher = rs.getString("publisher");
+				String category = rs.getString("category");
+				long unitsInStock = rs.getLong("unitsInStock");
+				String releaseDate = rs.getString("releaseDate");
+				String bookcondition = rs.getString("bookcondition");
+				String filename = rs.getString("filename");
+
+				Book bk = new Book();
+				bk.setBookId(dbbookId);
+				bk.setBookname(bookname);
+				bk.setUnitPrice(unitPrice);
+				bk.setAuthor(author);
+				bk.setBookdescription(bookdescription);
+				bk.setPublisher(publisher);
+				bk.setCategory(category);
+				bk.setUnitsInStock(unitsInStock);
+				bk.setReleaseDate(releaseDate);
+				bk.setBookcondition(bookcondition);
+				bk.setFilename(filename);
+				
+				bookById = bk;
 			}
+		} catch (Exception e) 
+		{
+			System.out.println("%%%%예외처리 발생" + e.getMessage());
 		}
+		System.out.println("[getBookById 함수가 무사히 실행을 마치고 " + bookId +"에 해당하는 dto를 가져옵니다]");
 		return bookById;
 	}
 	
-	*/
 	//dao에 책 추가하기
 	public void addBook(Book book)
 	{
 		//
-		System.out.println("리파지터리의 addBook 함수실행");
+		System.out.println("[addBook 함수 입장]");
 		//데이터베이스 연결
 		Connection conn = dbconn();
 		//SQL전송
 		PreparedStatement pstmt = null;
 		
 		String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?)";
-		
+		System.out.println("[ 다음 SQL문을 데이터베이스로 보냅니다 " + sql + " ]");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBookId()); 
@@ -173,10 +211,75 @@ public class BookRepository
 				
 			
 		}
-
-		
-		
-		
+		System.out.println("[addBook 함수가 종료되었습니다]");
 	}
 
+	//하나의 책dto 삭제
+	public void delBook(String bookId) 
+	{
+		//데이터 베이스 연결
+		Connection conn = dbconn();
+		//SQL 전송
+		PreparedStatement pstmt = null;
+		String sql = "delete from book where bookid=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bookId);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//하나의 책DTO를 수정한다
+	public void updateBook(Book book) 
+	{
+		System.out.println("[updateBook 함수에 입장했습니다]");
+		//데이터 베이스 연결
+		Connection conn = dbconn();
+		//SQL 전송
+		PreparedStatement pstmt = null;
+		String sql = null;
+	      try {
+	          String filename= book.getFilename();
+	          if(filename != null) {   //filename을 포함한 나머지를 전부 sql문으로 보냄
+	        	 System.out.println("[첨부하신 파일 " + filename + "을 포함하고 있습니다]");
+	             sql = "UPDATE book SET bookname=?, unitPrice=?, author=?, bookdescription=?, publisher=?, category=?, unitsInStock=?, releaseDate=?, bookcondition=?, fileName=? WHERE bookid=?";   
+	             pstmt = conn.prepareStatement(sql);
+	             pstmt.setString(1, book.getBookname()); 
+	             pstmt.setInt(2, book.getUnitPrice()); 
+	             pstmt.setString(3, book.getAuthor()); 
+	             pstmt.setString(4, book.getBookdescription()); 
+	             pstmt.setString(5, book.getPublisher()); 
+	             pstmt.setString(6, book.getCategory()); 
+	             pstmt.setLong(7, book.getUnitsInStock()); 
+	             pstmt.setString(8, book.getReleaseDate());    
+	             pstmt.setString(9, book.getBookcondition()); 
+	             pstmt.setString(10, book.getFilename()); 
+	             pstmt.setString(11, book.getBookId());
+	             System.out.println("[sql문을 데이터베이스로 전송합니다]");
+	          }
+	          else { //filename 제외한 나머지를 전부 sql문으로 보냄
+	        	 System.out.println("[첨부한 파일이 없습니다. 그 외 데이터만 수정등록 합니다]");
+	             sql = "UPDATE book SET bookname=?, unitPrice=?, author=?, bookdescription=?, publisher=?, category=?, unitsInStock=?, releaseDate=?, bookcondition=? WHERE bookid=?";   
+	             pstmt = conn.prepareStatement(sql);
+	             pstmt.setString(1, book.getBookname()); 
+	             pstmt.setInt(2, book.getUnitPrice()); 
+	             pstmt.setString(3, book.getAuthor()); 
+	             pstmt.setString(4, book.getBookdescription()); 
+	             pstmt.setString(5, book.getPublisher()); 
+	             pstmt.setString(6, book.getCategory()); 
+	             pstmt.setLong(7, book.getUnitsInStock()); 
+	             pstmt.setString(8, book.getReleaseDate());    
+	             pstmt.setString(9, book.getBookcondition()); 
+	             pstmt.setString(10, book.getBookId()); 
+	             System.out.println("[sql문을 데이터베이스로 전송합니다]");
+	          }
+	          pstmt.executeUpdate();
+	       }catch(Exception e) {
+	    	   System.out.println("[%%%에러발생 " + e.getMessage() + "]");
+	       }
+	      System.out.println("[updateBook 함수를 종료합니다]");
+	}
 }

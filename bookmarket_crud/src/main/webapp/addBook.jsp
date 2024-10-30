@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<% System.out.println("@@@@addBook.jsp 이동 완료!!"); %>
 <!DOCTYPE html>
 <html>
 <head>

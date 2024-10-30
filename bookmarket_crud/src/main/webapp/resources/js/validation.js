@@ -48,6 +48,7 @@ function CheckAddBook() {
     }
 
     // 유효성 검사를 모두 통과한 후 폼 제출
+	console.log("CheckAddBook 함수 실행 완료");
     newBookForm.submit();
 }
 

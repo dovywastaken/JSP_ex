@@ -22,28 +22,12 @@
 				<li class="nav-item"><a href="addBook" class="nav-link">상품
 						등록</a></li>
 				<!-- U: 상품 수정 -->
-				<li class="nav-item"><a href=editBook?edit-update
+				<li class="nav-item"><a href=editBook?edit=update
 					class="nav-link">상품 수정</a></li>
 				<!-- D : 상품 삭제 -->
-				<li class="nav-item"><a href="editBook?edit-delete"
+				<li class="nav-item"><a href="editBook?edit=delete"
 					class="nav-link">상품 삭제</a></li>
 			</ul>
-<!-- 
-		    <a href="books" class="d-flex align-items-center text-dark text-decoration-none">
-		        <span class="fs-4">전체 상품</span>
-		    </a>
-		    
-		    <a href="addBook" class="d-flex align-items-center text-dark text-decoration-none">
-		        <span class="fs-4">상품 등록</span>
-		    </a>
-		    
-		        <a href="editBook?edit-update" class="d-flex align-items-center text-dark text-decoration-none">
-		        <span class="fs-4">상품 수정</span>
-		    </a>
-		        <a href="editBook?edit-delete" class="d-flex align-items-center text-dark text-decoration-none">
-		        <span class="fs-4">상품 삭제</span>
-		    </a>
-		     -->
 	</div>
 	</div>
 
