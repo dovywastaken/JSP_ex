@@ -3,7 +3,7 @@
 
 <%@ page import="java.util.*" %>
 <%@ page import ="dto.Book" %>
-
+<% System.out.println("4 : Books.jsp로 뷰가 이동함 "); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,7 @@
 		<%@ include file = "menu.jsp" %>
 		<%
 			ArrayList<Book> arr = (ArrayList<Book>)request.getAttribute("list");
+			if(arr == null) System.out.println("5: 컨트롤러에서 받아온 list 값이 없음");
 		%>
 		
 		<div class ="p-5 mb-4 bg-body-tertiary rounded-3">
@@ -28,13 +29,10 @@
 		
 		<div class="row align-items-md-stretch text-center">
 		<%
-		
-		
 			for(int i=0; i<arr.size(); i++)
 			{
 				Book bk = arr.get(i);
 		%>
-			
 			<div class="col-md-4">
 				<div class = "h-100 p-2 round-3">
 					<img src="./resources/images/<%=bk.getFilename() %>" style="width : 250; height : 350"/>
