@@ -1,6 +1,9 @@
 package Book_Controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.BookRepository;
@@ -38,5 +41,28 @@ public class Delete_Controller  extends HttpServlet
 	{
 		System.out.println("============================================================================");
 		System.out.println("Delete_Controller의 doPost메서드로 입장");
+		/*
+		String bookId = req.getParameter("id");
+		BookRepository br = BookRepository.getInstance();
+		Connection conn = br.dbconn();
+		PreparedStatement pstmt = null;
+		String sql = "select * from book";
+		try 
+		{
+			pstmt = conn.prepareStatement(sql);
+			if(rs.next) 
+			{
+				sql = "delete from book where bookId=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, bookId);
+				pstmt.executeUpdate();
+			}
+			else {System.out.println("일치하는 도서가 없습니다");}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		*/
 	}
 }
