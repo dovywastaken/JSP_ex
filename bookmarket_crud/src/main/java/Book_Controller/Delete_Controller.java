@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-//@WebServlet("/editBook")
+@WebServlet("/deleteBook")
 public class Delete_Controller  extends HttpServlet
 {
 	@Override
@@ -29,7 +29,7 @@ public class Delete_Controller  extends HttpServlet
 		
 		//모델이동
 		BookRepository br = BookRepository.getInstance();
-		ArrayList<Book> arr = br.getAllBooks();
+		br.delBook(id);
 		
 		//뷰이동
 		resp.sendRedirect("books");
@@ -41,28 +41,6 @@ public class Delete_Controller  extends HttpServlet
 	{
 		System.out.println("============================================================================");
 		System.out.println("Delete_Controller의 doPost메서드로 입장");
-		/*
-		String bookId = req.getParameter("id");
-		BookRepository br = BookRepository.getInstance();
-		Connection conn = br.dbconn();
-		PreparedStatement pstmt = null;
-		String sql = "select * from book";
-		try 
-		{
-			pstmt = conn.prepareStatement(sql);
-			if(rs.next) 
-			{
-				sql = "delete from book where bookId=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, bookId);
-				pstmt.executeUpdate();
-			}
-			else {System.out.println("일치하는 도서가 없습니다");}
-		}
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		*/
+
 	}
 }

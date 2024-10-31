@@ -44,6 +44,8 @@
 				<li class="nav-item"><a href=editBook?edit=update class="nav-link">상품 수정</a></li>
 				<!-- D : 상품 삭제 -->
 				<li class="nav-item"><a href="editBook?edit=delete"class="nav-link">상품 삭제</a></li>
+				
+				<li class ="nav-item"><a href = "BoardListAction?pageNum=1" class = "nav-link">게시판</a></li>
 			</ul>
 		</div>
 	</div>

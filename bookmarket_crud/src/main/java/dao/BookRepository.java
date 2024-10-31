@@ -217,6 +217,7 @@ public class BookRepository
 	//하나의 책dto 삭제
 	public void delBook(String bookId) 
 	{
+		System.out.println("[delBook 함수 입장]");
 		//데이터 베이스 연결
 		Connection conn = dbconn();
 		//SQL 전송
@@ -230,6 +231,7 @@ public class BookRepository
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("[delBook 함수 종료]");
 	}
 	
 	//하나의 책DTO를 수정한다
