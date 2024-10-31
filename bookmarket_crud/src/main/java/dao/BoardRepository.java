@@ -27,7 +27,7 @@ public class BoardRepository
 	//db연결 메서드
 	public Connection dbconn()
 	{
-		Connection conn = null;
+		conn = null;
 		//System.out.println("conn 참조 변수 생성");
 		try {
 			String database = "jdbc:mysql://localhost:3306/BookMarketDB";
@@ -145,7 +145,7 @@ public class BoardRepository
 	public void update() 
 	{
 		//db
-		Connection conn = dbconn();
+
 		//SQL
 		
 		//ResultSet
@@ -158,7 +158,7 @@ public class BoardRepository
 	public void delete() 
 	{
 		//db
-		Connection conn = dbconn();
+
 		//SQL
 		
 		//ResultSet

@@ -24,7 +24,7 @@ public class Read_Controller  extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		System.out.println("============================================================================");
-		System.out.println("Board_Create_Controller의 doGet() 입장");
+		System.out.println("Board_Read_Controller의 doGet() 입장");
 		int Limit = 5; //한 페이지에 출력할 글의 갯수를 제한
 		//전처리
 		int pageNum = Integer.parseInt((req.getParameter("pageNum")));
@@ -54,7 +54,7 @@ public class Read_Controller  extends HttpServlet
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("============================================================================");
-        System.out.println("Board_Create_Controller의 doPost() 입장");
+        System.out.println("Board_Read_Controller의 doPost() 입장");
         
       //전처리
       //모델이동

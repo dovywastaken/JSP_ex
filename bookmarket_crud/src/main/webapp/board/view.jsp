@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ page import="mvc.model.BoardDTO"%>
+<%@ page import="dto.Board"%>
 
 <%
-	BoardDTO notice = (BoardDTO) request.getAttribute("board");
+	Board notice = (Board) request.getAttribute("board");
 	int num = ((Integer) request.getAttribute("num")).intValue();
 	int nowpage = ((Integer) request.getAttribute("page")).intValue();
 %>
