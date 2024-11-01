@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import ="dao.BookRepository" %>
+<%@ page session="false" %>
 
+<%@ page import ="dao.BookRepository" %>
 <%@ page import="java.util.*" %>
 <%@ page import ="dto.Book" %>
 <% System.out.println("@@@@Books.jsp 이동 완료!!"); %>

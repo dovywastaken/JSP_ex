@@ -49,7 +49,7 @@ public class BookRepository
 	}
 	
 	
-	//모든 책 dto를 ArrayList에 묶어서 가져오기
+	//R 모든 책 dto를 ArrayList에 묶어서 가져오기
 	public ArrayList<Book> getAllBooks()
 	{
 		System.out.println("[getAllBooks 함수가 실행되었습니다]");
@@ -65,7 +65,6 @@ public class BookRepository
 			String sql = "select * from book";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
 			//후처리
 			while(rs.next()) 
 			{
@@ -107,7 +106,7 @@ public class BookRepository
 		return listOfBooks;
 	}
 	
-	//id에 맞는 책dto 가져오기
+	//R id에 맞는 책dto 가져오기
 	public Book getBookById(String bookId) 
 	{
 		System.out.println("[getBookByID 함수 입장]");
@@ -119,13 +118,12 @@ public class BookRepository
 		Connection conn = dbconn();
 		//쿼리 전송
 		String sql = "select * from book where bookid=?";
-		System.out.println("[ 다음 SQL문을 데이터베이스로 보냅니다 " + sql + " ]");
 		try 
 		{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bookId);
 			rs = pstmt.executeQuery();
-			
+			System.out.println("[ 다음 SQL문을 데이터베이스로 보냅니다 " + sql + " ]");
 			//ResultSet을 객체로 전환
 			if(rs.next()) {
 				String dbbookId = rs.getString("bookId");
@@ -163,7 +161,7 @@ public class BookRepository
 		return bookById;
 	}
 	
-	//dao에 책 추가하기
+	//C dao에 책 추가하기
 	public void addBook(Book book)
 	{
 		//
@@ -177,7 +175,7 @@ public class BookRepository
 		System.out.println("[ 다음 SQL문을 데이터베이스로 보냅니다 " + sql + " ]");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, book.getBookId()); 
+			pstmt.setString(1, book.getBookId());
 			pstmt.setString(2, book.getBookname());
 			pstmt.setInt(3, book.getUnitPrice()); 
 			pstmt.setString(4, book.getAuthor()); 
@@ -214,7 +212,7 @@ public class BookRepository
 		System.out.println("[addBook 함수가 종료되었습니다]");
 	}
 
-	//하나의 책dto 삭제
+	//D 하나의 책dto 삭제
 	public void delBook(String bookId) 
 	{
 		System.out.println("[delBook 함수 입장]");
@@ -234,7 +232,7 @@ public class BookRepository
 		System.out.println("[delBook 함수 종료]");
 	}
 	
-	//하나의 책DTO를 수정한다
+	//U 하나의 책DTO를 수정한다
 	public void updateBook(Book book) 
 	{
 		System.out.println("[updateBook 함수에 입장했습니다]");

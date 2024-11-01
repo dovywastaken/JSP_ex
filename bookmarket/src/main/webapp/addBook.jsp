@@ -118,12 +118,12 @@
 				</div>
 				
 				<div class="mb-3 row">
-					<label class="col-sm-2"><fmt:message key = "bookImage"/></label>
+					<label class="col-sm-2"><fmt:message key ="bookImage"/></label>
 					<div class = "col-sm-5">
 						<input type="file" name="BookImage" class="form-control">
 					</div>
 					<div class="col-sm-3">
-						<input type = "button" class="btn btn-primary" value =<fmt:message key = "button"/> id="submitBtn">
+						<input type = "button" class="btn btn-primary" value =<fmt:message key ="button"/> id="submitBtn">
 					</div>
 				</div>
 				

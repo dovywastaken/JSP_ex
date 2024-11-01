@@ -1,15 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dto.Member" %>
+<%@ page session="false" %>
 <%
+	String sessionId=null;
+	HttpSession session = null;
 	session = request.getSession(false);
-	String sessionId = null;
 	if(session != null)
 	{
-		Member mb = (Member)session.getAttribute("member");
-		if(mb != null)
-		{
-		sessionId = mb.getId();
-		}
+	    Member mb = (Member) session.getAttribute("member");
+	    if(mb != null)
+	    {
+	        sessionId = mb.getName();   
+	    }
 	}
 %>
 

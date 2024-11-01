@@ -1,12 +1,17 @@
 package Board_Controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import dao.BoardRepository;
 import dao.BookRepository;
+import dto.Board;
 import dto.Book;
+import dto.Member;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,90 +25,68 @@ public class Create_Controller extends HttpServlet{
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      System.out.println("Board Create_Controller의 doGet()입장");
+	   System.out.println("==============================================================");
+	   System.out.println("Board Create_Controller의 doGet()입장");
       //전처리
       HttpSession session = req.getSession(false);
       RequestDispatcher rs=null;
-      System.out.println(" - " + session);
-      if(session != null) {
+      System.out.println(session);
+      if(session == null) {
+         rs = req.getRequestDispatcher("member_login");
+      }
+      else if(session != null)
+      {
+         Member mb = (Member)session.getAttribute("member");
          if(session.getAttribute("member") == null) {
-            System.out.println(" - 세션존재 멤버 없음 이동한다");
+            System.out.println(" - 세션존재 멤버 없음/member_login 페이지로 뷰를 이동합니다");
             rs = req.getRequestDispatcher("member_login");
          }
+         else {
+        	System.out.println(" - 세션존재 멤버 있음/writeForm.jsp 페이지로 뷰를 이동합니다");
+            rs = req.getRequestDispatcher("writeForm.jsp");            
+         }
       }
-      else {
-    	  System.out.println(" - 세션존재 멤버 존재");
-         rs = req.getRequestDispatcher("writeForm.jsp");
-      }
-      System.out.println("뷰 이동");
+      
       rs.forward(req, resp);
       //모델이동
+      
       //뷰이동
       
    }
 
    @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-      System.out.println("Create_Controller의 doPost()");
+   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	  System.out.println("==============================================================");
+	  System.out.println("Board_Create_Controller의 doPost()");
       //전처리
-      request.setCharacterEncoding("UTF-8"); //한글아 깨지지마!
-      //String realFolder = "C:\\Users\\user\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BookMarket\\resources\\images";
-       // 일반 텍스트와 이미지 데이터가 썩여있으므로 분리가능한 객체가 필요하다.
-      String realFolder = request.getServletContext().getRealPath("resources/images"); 
-      String encType = "utf-8"; //인코딩 타입
-      int maxSize = 5 * 1024 * 1024; //최대 업로드될 파일의 크기5Mb
-      MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
-      String bookId = multi.getParameter("bookId");
-      String name = multi.getParameter("name");
-      String author = multi.getParameter("author");
-      String publisher = multi.getParameter("publisher");
-      String releaseDate = multi.getParameter("releaseDate");   
-      String description = multi.getParameter("description");   
-      String category = multi.getParameter("category");
-      String condition = multi.getParameter("condition");
-      // 아래의 두개의 값은 갯수를 뜻하므로 정수로 변경되어야함
-      String unitPrice = multi.getParameter("unitPrice");
-      String unitsInStock = multi.getParameter("unitsInStock");
+      HttpSession session = req.getSession(false);
+      Member mb = (Member)session.getAttribute("member");
+      String id = mb.getId();
+      String name = req.getParameter("name");
+      String subject = req.getParameter("subject");
+      String content = req.getParameter("content");
       
-      int price;
-
-      if (unitPrice.isEmpty()) {
-         price = 0;         
-      }
-      else {
-         price = Integer.valueOf(unitPrice);         
-      }
-
-      long stock;
-
-      if (unitsInStock.isEmpty()) {
-         stock = 0;         
-      }
-      else {
-         stock = Long.valueOf(unitsInStock);
-      }
-      //여기까지가 일반텍스트 전처리
-      // 저장된 이미지의 이름을 변수에 저장
-      String fileName = multi.getFilesystemName("bookImage");
+      Date currentDatetime = new Date(System.currentTimeMillis());
+      java.sql.Date sqlDate = new java.sql.Date(currentDatetime.getTime());
+      Timestamp regist_day = new Timestamp(currentDatetime.getTime());
       
-      Book bk = new Book();
-      bk.setBookId(bookId);
-      bk.setBookname(name);
-      bk.setAuthor(author);
-      bk.setPublisher(publisher);
-      bk.setReleaseDate(releaseDate);      
-      bk.setBookdescription(description);
-      bk.setCategory(category);
-      bk.setBookcondition(condition);
+      int hit = 0;
+      String ip = req.getRemoteAddr();
       
-      bk.setUnitPrice(price);
-      bk.setUnitsInStock(stock);
-      
-      bk.setFilename(fileName);
+      Board bd = new Board();
+      bd.setId(id);
+      bd.setName(name);
+      bd.setSubject(subject);
+      bd.setContent(content);
+      bd.setRegist_day(regist_day);
+      bd.setHit(hit);
+      bd.setIp(ip);
+      System.out.println("dto담기 완료");
       //모델이동
-      BookRepository br = BookRepository.getInstance();
-      br.addBook(bk);
-      //뷰이동 : CUD는 보여줄 뷰어가 없음
-      resp.sendRedirect("books");      
+      BoardRepository br = BoardRepository.getInstance();
+      br.create(bd);
+
+      //뷰이동
+      resp.sendRedirect("BoardListAction");
    }
 }

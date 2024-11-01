@@ -12,6 +12,11 @@
 <link rel ="stylesheet" href="./resources/css/bootstrap.min.css" />
 <body>
 	
+	<%
+		String cartId = null;
+	%>
+	
+	
 		<div class="container py-4">
 			<%@ include file = "menu.jsp" %>
 			
@@ -26,8 +31,8 @@
 				<div class="row">
 					<table width="100%">
 						<tr>
-							<td align="left"><a href="#" class="btn btn-danger">삭제하기</a></td>
-							<td align="right"><a href="" class="btn btn-success">주문하기</a></td>
+							<td align="left"><a href="delete" class="btn btn-danger">삭제하기</a></td>
+							<td align="right"><a href="shippingInfo.jsp?cartId=<%=cartId %>" class="btn btn-success">주문하기</a></td>
 						</tr>
 					</table>
 				</div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import ="dto.Book" %>
 <%@ page errorPage = "exceptionNoBookId.jsp" %>
+<%@ page session="false" %>
 <% System.out.println("@@@@book.jsp 이동 완료!!"); %>
 <!DOCTYPE html>
 <html>

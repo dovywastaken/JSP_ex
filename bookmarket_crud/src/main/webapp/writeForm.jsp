@@ -1,7 +1,21 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="false" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
+<%@page import="dto.Member" %>
+
 <%
-	//String name = (String) request.getAttribute("name");
+	System.out.println("@@@@ writeForm.jsp 페이지로 이동을 완료했습니다");
+	HttpSession session = request.getSession(false);
+	if(session == null)
+	{
+		System.out.println("= writeForm.jsp: 세션 없음");
+	}
+	System.out.println("세션의 주소값 " + session);
+	Member mb = (Member)session.getAttribute("member");
+	System.out.println("mb의 값 " + mb);
+	String name = mb.getName();
+	System.out.println("mb에서 빼온 이름의 값 " + name);
 	
 %>
 <html>
@@ -38,13 +52,13 @@
 
 	<div class="row align-items-md-stretch   text-center">	 	
 
-		<form name="newWrite" action="./BoardWriteAction"  method="post" onsubmit="return checkForm()">
+		<form name="newWrite" action="BoardWriteForm"  method="post" onsubmit="return checkForm()">
 			<input name="id" type="hidden" class="form-control"
 				value="${sessionId}">
 			<div class="mb-3 row">
 				<label class="col-sm-2 control-label" >성명</label>
 				<div class="col-sm-3">
-					<input name="name" type="text" class="form-control" value="name" placeholder="name">
+					<input name="name" type="text" class="form-control" value="<%=name%>" placeholder="name">
 				</div>
 			</div>
 			<div class="mb-3 row">

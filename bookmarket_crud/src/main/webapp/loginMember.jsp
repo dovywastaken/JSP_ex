@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ page session="false" %>
 <%System.out.println("@@@@ member_login뷰로 이동했습니다"); %>
 <html>
 <head>

@@ -2,6 +2,7 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="dto.Book"%>
+<%@ page session="false" %>
 <%
    ArrayList<Book> arr =(ArrayList<Book>) request.getAttribute("list");
    String edit = (String)request.getAttribute("edit");

@@ -12,14 +12,19 @@
    ArrayList<Board> boardList = (ArrayList<Board>) request.getAttribute("list");   
    String sessionId = null;
    String sessionName = null;
-    
+   
+   System.out.println("@@@@ list.jsp 페이지로 이동을 완료했습니다");
+   
    HttpSession session = request.getSession(false);
    if(session != null){
       System.out.println("세션을 만드셨어요... 존재합니다");
       Member mb = (Member)session.getAttribute("member");
       if(mb != null){
+    	 System.out.println("mb의 값 " + mb);
          sessionId = mb.getId();
+         System.out.println("sessionId의 값 " + sessionId);
          sessionName = mb.getName();
+         System.out.println("sessionName의 값 " + sessionName);
       }
    }
    else{
@@ -69,7 +74,7 @@
                   <th>글쓴이</th>
                </tr>
                <%
-               
+               		System.out.println("list.jsp ArrayList = " + boardList.size());
                   for (int j = 0; j < boardList.size() ; j++){
                      
                      Board notice = (Board) boardList.get(j);
@@ -107,11 +112,11 @@
          </div>
          
          <div class="py-3" align="right">                     
-            <a href="#" onclick="checkForm(); return false;" class="btn btn-primary">
+            <!-- <a href="#" onclick="checkForm(); return false;" class="btn btn-primary">
                 &laquo;글쓰기:JavaScript
-            </a>
+            </a> -->
             <a href="BoardWriteForm" class="btn btn-primary">
-                    &laquo;글쓰기:Controller
+                    &laquo; 글쓰기(Controller)
                 </a>            
          </div>         
          <div align="left">            

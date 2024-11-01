@@ -27,7 +27,13 @@ public class Read_Controller  extends HttpServlet
 		System.out.println("Board_Read_Controller의 doGet() 입장");
 		int Limit = 5; //한 페이지에 출력할 글의 갯수를 제한
 		//전처리
-		int pageNum = Integer.parseInt((req.getParameter("pageNum")));
+		String page = req.getParameter("pageNum");
+		System.out.println(page);
+		int pageNum = 1;
+		if(page != null) 
+		{
+			pageNum = Integer.parseInt(page);
+		}
 		//모델이동
 		BoardRepository br = BoardRepository.getInstance();
 		ArrayList<Board> arr = (ArrayList<Board>)br.getAllBoard();
